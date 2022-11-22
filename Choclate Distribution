@@ -1,0 +1,29 @@
+import java.util.Arrays;
+
+// Choclate Distribution
+
+public class Main {
+
+	public static int Solution(int arr[], int m, int n) {
+		
+		if(m==0 || n==0 ) return 0;
+		if(n<m) return -1;
+		
+		Arrays.sort(arr);
+		int Min_Difference = Integer.MAX_VALUE;
+		
+		for(int i =0;i+m-1<n;i++,m++) {
+			int diff = arr[i+m-1]-arr[i];
+			if(diff<Min_Difference) {
+				Min_Difference = diff;
+			}
+		}
+		
+		return Min_Difference;
+	}
+
+	public static void main(String[] args) {
+		int arr[] = { 1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32 };
+		Solution(arr, 10, 20);
+	}
+}
