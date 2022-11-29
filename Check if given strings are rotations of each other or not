@@ -1,0 +1,39 @@
+package JavaPrograms;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Strings {
+
+    public static boolean areRotations(String s, String goal){
+
+        if(s.length()!=goal.length()) return false;
+
+        Queue<Character> q1 = new LinkedList<>();
+        for(int i = 0;i<s.length();i++){
+            q1.add(s.charAt(i));
+        }
+
+        Queue<Character> q2 = new LinkedList<>();
+        for(int i = 0;i<goal.length();i++){
+            q1.add(goal.charAt(i));
+        }
+
+        int length = goal.length();
+
+        while(length>0){
+            length--;
+            char c = q1.remove();
+            q1.add(c);
+            if(q1.equals(q2)) return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args){
+        String s = "AACD";
+        String goal = "ACDA";
+
+        System.out.println(areRotations(s,goal));
+    }
+}
